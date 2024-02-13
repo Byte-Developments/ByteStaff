@@ -1,0 +1,4 @@
+name: ByteStaff
+version: '${version}'
+main: net.bytedev.bytestaff.ByteStaff
+api-version: '1.19'
