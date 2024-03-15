@@ -14,9 +14,11 @@ public class ByteVanish {
             }
             else {
                 if (LoopVanishPlayer.isOp() || LoopVanishPlayer.hasPermission("bytestaff.vanish.broadcast")) {
+
                     LoopVanishPlayer.sendMessage(Component.text("Player " + VanishPlayer.getName() + " has vanished.", NamedTextColor.GREEN));
                 }
             }
         }
     }
+
 }

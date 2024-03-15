@@ -5,5 +5,4 @@ api-version: '1.19'
 
 commands:
   bytestaff:
-    usage: '/<command>'
     description: 'Byte Staff Main Command.'
