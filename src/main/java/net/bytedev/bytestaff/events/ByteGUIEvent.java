@@ -31,12 +31,6 @@ public class ByteGUIEvent implements Listener {
     }
 
     @EventHandler
-    public void onInventoryClick(InventoryClickEvent event) {
-
-        Player ClickPlayer = (Player) event.getWhoClicked();
-    }
-
-    @EventHandler
     public void onInventoryClose(InventoryCloseEvent event) {
 
         Player ClosePlayer = (Player) event.getPlayer();

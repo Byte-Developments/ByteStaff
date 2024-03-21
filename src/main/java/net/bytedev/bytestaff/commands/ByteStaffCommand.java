@@ -3,6 +3,7 @@ package net.bytedev.bytestaff.commands;
 import net.bytedev.bytestaff.ByteStaff;
 import net.bytedev.bytestaff.items.ByteFreezeWand;
 import net.bytedev.bytestaff.menus.ByteInvseeMenu;
+import net.bytedev.bytestaff.util.ByteStaffChat;
 import net.bytedev.bytestaff.util.ByteVanish;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -33,6 +34,16 @@ public class ByteStaffCommand implements CommandExecutor {
             InvPlayer = args[1];
 
             ByteInvseeMenu.ByteOpenInvsee(CommandPlayer, args[1]);
+        }
+        else if (args[0].equalsIgnoreCase("staffchat")) {
+
+            if (args.length >= 3) {
+                ByteStaffChat.ByteToggleSC(args[1], CommandPlayer, args[2]);
+            }
+            else {
+                ByteStaffChat.ByteToggleSC(args[1], CommandPlayer);
+            }
+
         }
 
         return false;

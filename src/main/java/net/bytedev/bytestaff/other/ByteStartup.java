@@ -8,4 +8,8 @@ public class ByteStartup {
     public static void BytePluginStart() {
 
     }
+
+    public static void BytePluginStop() {
+
+    }
 }
