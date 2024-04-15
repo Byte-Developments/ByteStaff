@@ -57,7 +57,7 @@ public class ByteStaffChat {
                     ByteStaffChatDB.UpdateStaffChat(SCPlayer.getName(), SCPlayer.getUniqueId().toString(), false);
 
                     SettingPlayer.sendMessage(Component.text("You've disabled StaffChat for " + SCPlayer.getName() + ".", NamedTextColor.RED));
-                    SCPlayer.sendMessage(Component.text("StaffChat has been disabled by " + SettingPlayer.getName() + ".", NamedTextColor.GREEN));
+                    SCPlayer.sendMessage(Component.text("StaffChat has been disabled by " + SettingPlayer.getName() + ".", NamedTextColor.RED));
                 }
                 else {
                     SettingPlayer.sendMessage(Component.text("You don't have permission to set other's StaffChat.", NamedTextColor.RED));

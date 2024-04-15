@@ -17,13 +17,13 @@ public class OnChatEvent implements Listener {
 
         Player ChatPlayer = event.getPlayer();
 
-        if (ByteStaffChatDB.CheckStaffChat(ChatPlayer.getUniqueId().toString(), true)) {
+        if (ByteStaffChatDB.CheckStaffChat(ChatPlayer.getUniqueId().toString())) {
 
             event.setCancelled(true);
 
             for (Player LoopSCPlayer : Bukkit.getOnlinePlayers()) {
 
-                if (ByteStaffChatDB.CheckStaffChat(LoopSCPlayer.getUniqueId().toString(), true)) {
+                if (ByteStaffChatDB.CheckStaffChat(LoopSCPlayer.getUniqueId().toString())) {
 
                     LoopSCPlayer.sendMessage(Component
                             .text("[", NamedTextColor.DARK_GRAY)

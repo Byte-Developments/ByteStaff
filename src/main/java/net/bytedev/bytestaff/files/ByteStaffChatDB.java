@@ -6,60 +6,51 @@ public class ByteStaffChatDB {
 
     private static String url = "jdbc:sqlite:plugins/ByteStaff/staffchat.db";
 
-    public static void CreateStaffDB() {
+    public static void CreateTable() {
+        try (Connection connection = DriverManager.getConnection(url);
+             Statement stmt = connection.createStatement()) {
 
-        try (Connection connection = DriverManager.getConnection(url)) {
             String sql = "CREATE TABLE IF NOT EXISTS StaffChat (" +
-                    "username TEXT NOT NULL," +
-                    "uuid TEXT NOT NULL," +
-                    "isStaff BOOLEAN" +
-                    ")";
-            try (Statement stmt = connection.createStatement()) {
-                stmt.executeUpdate(sql);
-            }
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
+                    "Username TEXT NOT NULL, " +
+                    "UUID TEXT PRIMARY KEY, " +
+                    "StaffChat BOOLEAN NOT NULL)";
 
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            System.err.println("Error creating table: " + e.getMessage());
+        }
     }
 
-    public static void UpdateStaffChat(String UpdateUsername, String UpdateUUID, Boolean IsStaff) {
-        try (Connection connection = DriverManager.getConnection(url)) {
-            String sql = "INSERT OR REPLACE INTO StaffChat (username, uuid, isStaff) VALUES (?, ?, ?)";
-            try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-                pstmt.setString(1, UpdateUsername);
-                pstmt.setString(2, UpdateUUID);
-                pstmt.setBoolean(3, IsStaff);
-                pstmt.executeUpdate();
+    // Update or insert a record into the StaffChat table
+    public static void UpdateStaffChat(String username, String uuid, boolean staffChat) {
+        try (Connection connection = DriverManager.getConnection(url);
+             PreparedStatement pstmt = connection.prepareStatement(
+                     "INSERT OR REPLACE INTO StaffChat (Username, UUID, StaffChat) VALUES (?, ?, ?)")) {
+
+            pstmt.setString(1, username);
+            pstmt.setString(2, uuid);
+            pstmt.setBoolean(3, staffChat);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Error updating record: " + e.getMessage());
+        }
+    }
+
+    // Check if a user has staff chat enabled based on UUID
+    public static boolean CheckStaffChat(String uuid) {
+        try (Connection connection = DriverManager.getConnection(url);
+             PreparedStatement pstmt = connection.prepareStatement(
+                     "SELECT StaffChat FROM StaffChat WHERE UUID = ?")) {
+
+            pstmt.setString(1, uuid);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getBoolean("StaffChat");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Error checking staff chat: " + e.getMessage());
         }
-    }
-
-    public static boolean CheckStaffChat(String CheckUUID, boolean CheckValue) {
-
-        try (Connection connection = DriverManager.getConnection(url)) {
-            String SQLine = "SELECT isStaff FROM StaffChat WHERE uuid = ?";
-            try (PreparedStatement Statment = connection.prepareStatement(SQLine)) {
-                Statment.setString(1, CheckUUID);
-                try (ResultSet rs = Statment.executeQuery()) {
-                    if (rs.next()) {
-                        boolean ActualVal = rs.getBoolean("isStaff");
-                        return ActualVal == CheckValue;
-                    }
-                    else {
-                        return false;
-                    }
-                }
-            }
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-
+        return false;
     }
 
 }

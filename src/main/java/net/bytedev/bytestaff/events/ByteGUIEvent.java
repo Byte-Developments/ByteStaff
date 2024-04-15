@@ -10,9 +10,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.inventory.InventoryDragEvent;
-import org.bukkit.event.inventory.InventoryOpenEvent;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,23 +17,25 @@ import java.util.List;
 public class ByteGUIEvent implements Listener {
 
     @EventHandler
-    public void onInventoryOpen(InventoryOpenEvent event) {
+    public void onInventoryClick(InventoryClickEvent event) {
+        Player ClickPlayer = (Player) event.getWhoClicked();
 
-        Player OpenPlayer = (Player) event.getPlayer();
+        if (ClickPlayer.hasMetadata("ByteInvsee")) {
 
-        if (OpenPlayer.hasMetadata("opened-invsee")) {
-            System.out.println("Works");
-            event.getView().setTitle(ByteStaffCommand.InvPlayer + "'s Inventory");
+            if (!ClickPlayer.hasPermission("bytestaff.invsee.edit")) {
+
+                event.setCancelled(true);
+            }
         }
     }
 
     @EventHandler
     public void onInventoryClose(InventoryCloseEvent event) {
-
         Player ClosePlayer = (Player) event.getPlayer();
 
-        if (ClosePlayer.hasMetadata("opened-invsee")) {
-            ClosePlayer.removeMetadata("opened-invsee", ByteStaff.getInstance());
+        if (ClosePlayer.hasMetadata("ByteInvsee")) {
+
+            ClosePlayer.removeMetadata("ByteInvsee", ByteStaff.getInstance());
         }
     }
 }

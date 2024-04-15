@@ -6,25 +6,20 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 
 
 public class ByteInvseeMenu {
 
-    public static void ByteOpenInvsee(Player OpenPlayer, String InvseePlayer) {
+    public static void ByteOpenInvsee(Player viewer, String target) {
 
-        if (Bukkit.getServer().getPlayer(InvseePlayer) != null) {
+        Player TargetPlayer = Bukkit.getPlayer(target);
 
-            Inventory InvseeInv = Bukkit.getPlayer(InvseePlayer).getInventory();
+        if (TargetPlayer != null) {
 
-            OpenPlayer.setMetadata("opened-invsee", new FixedMetadataValue(ByteStaff.getInstance(), true));
-            OpenPlayer.openInventory(InvseeInv);
-
+            viewer.openInventory(TargetPlayer.getInventory());
         }
-        else {
-            OpenPlayer.sendMessage(Component.text("This player isn't currently online.", NamedTextColor.RED));
-        }
-
     }
 
 }

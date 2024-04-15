@@ -1,8 +1,9 @@
 name: ByteStaff
-version: '${version}'
+version: '${project.version}'
 main: net.bytedev.bytestaff.ByteStaff
 api-version: '1.19'
 
 commands:
   bytestaff:
-    description: 'Byte Staff Main Command.'
+    usage: '/bytestaff'
+    description: "Main command for ByteStaff."
