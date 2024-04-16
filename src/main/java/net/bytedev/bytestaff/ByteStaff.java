@@ -7,6 +7,7 @@ import net.bytedev.bytestaff.events.OnChatEvent;
 import net.bytedev.bytestaff.files.ByteConfig;
 import net.bytedev.bytestaff.files.ByteStaffChatDB;
 import net.bytedev.bytestaff.files.ByteWhitelistDB;
+import net.bytedev.bytestaff.menus.ByteSilentChest;
 import net.bytedev.bytestaff.other.LicenseManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
@@ -36,6 +37,7 @@ public final class ByteStaff extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ByteClickEvent(), this);
         getServer().getPluginManager().registerEvents(new ByteGUIEvent(), this);
         getServer().getPluginManager().registerEvents(new OnChatEvent(), this);
+        getServer().getPluginManager().registerEvents(new ByteSilentChest(), this);
 
     }
 
