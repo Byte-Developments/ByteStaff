@@ -1,1 +1,24 @@
 License-Key: GET FROM OUR DISCORD SERVER!
+
+Vanish: # Here, you can customize the vanish feature of ByteStaff.
+
+  Settings:
+
+    Enable-Vanish: true # Should we enable the vanish feature?
+
+    # Common settings:
+    # These are the basic settings for vanish.
+
+    Hide-Player: true # This setting turns off if the player should be hidden whilst vanished.
+    Silent-Chest: true # Should chests open silent when opened while in vanish?
+    Silent-Chest-Staff: true # Should player's with bytestaff.silentchest.view be able to view silent chest?
+    Chat-Verify: false # This makes it so when in vanish, a player has to repeat a message to send it.
+    Block-Particles: false # Should block particles show when walking?
+    Allow-Hit: true # Should players in vanish be able to damage other players?
+
+    # Advanced Settings:
+    # Here are the more advanced settings for vanish.
+
+    Allow-Trample: false # Should we block farmland trampling while in vanish?
+    Open-Container: true # Should vanish players be able to open contains?
+    Damage-Entities: false # Can vanish players damage any mob?

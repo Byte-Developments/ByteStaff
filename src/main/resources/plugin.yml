@@ -3,6 +3,8 @@ version: '${project.version}'
 main: net.bytedev.bytestaff.ByteStaff
 api-version: '1.19'
 
+depend: [ 'ProtocolLib' ]
+
 commands:
   bytestaff:
     usage: '/bytestaff'

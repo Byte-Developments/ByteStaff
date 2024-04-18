@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class ByteStaffChatDB {
 
-    private static String url = "jdbc:sqlite:plugins/ByteStaff/staffchat.db";
+    private static String url = "jdbc:sqlite:plugins/ByteStaff/data/staffchat.db";
 
     public static void CreateTable() {
         try (Connection connection = DriverManager.getConnection(url);

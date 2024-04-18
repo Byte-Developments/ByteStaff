@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class ByteWhitelistDB {
 
-    private static String url = "jdbc:sqlite:plugins/ByteStaff/whitelist.db";
+    private static String url = "jdbc:sqlite:plugins/ByteStaff/data/whitelist.db";
 
     public static void CreateWhitelistDB() {
 
